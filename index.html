@@ -1,0 +1,115 @@
+<html>
+<h1 align="Center"> Student Result </h1>
+<style>
+body
+  {
+   background-image:url('bb.jpg');
+   background-repeat:no-repeat;
+   background-attachement:fixed;
+   background-size:100%100%;
+   color:white;
+  }
+table{
+border: 2px solid black;
+} 
+table{
+border-spacing:10px;
+background-image: linear-gradient(to right, red , PapayaWhip);
+}
+th
+{
+color:Purple;
+}
+td
+{
+color:Black;
+}
+th,td,h3{
+ padding: 5px;	
+}
+</style>
+        
+        <form name="forum" onsubmit="return getReport()">
+            <table align="Center" width="30%" style="background-color:PapayaWhip" >
+                <tr>
+                    <td> Name:  <input type="text" id="name1" > </td>
+                </tr>
+                <tr>
+                    <td> <strong> Marks </strong> </td>
+                </tr>
+                <tr>
+                    <td> English  <input type="text" id="eng" > </td>
+                </tr>
+                <tr>
+                    <td> Maths  <input type="text" id="maths" > </td>
+                </tr>
+                <tr>
+                    <td> Physics  <input type="text" id="phys" > </td>
+                </tr>
+                <tr>
+                    <td> chemistry  <input type="text" id="chem" > </td>
+                </tr>
+                <tr>
+                    <td> computer  <input type="text" id="comp" > </td>
+                </tr>
+                <tr>
+                    <td> <input type="submit" id="subb"  value="SUBMIT"> </td>
+                </tr>
+            </table>
+        </form>
+        <h3 align="Center">NAME</h3><p align="Center" id="resname"></p>
+        <h3 align="Center">RESULT</h3><p align="Center" id="resul"></p>
+        <h3 align="Center">TOTAL</h3><p align="Center" id="gettol"></p>
+        <h3 align="Center">AVERAGE</h3><p align="Center" id="getavg"></p>
+        <h3 align="Center">ELITE SCORE</h3><p align="Center" id="elite"></p>
+    <script>
+        function getReport() {
+    var name = document.getElementById('name1').value;
+    var eng = parseInt(document.getElementById('eng').value);
+    var mat = parseInt(document.getElementById('maths').value);
+    var phy = parseInt(document.getElementById('phys').value);
+    var chem = parseInt(document.getElementById('chem').value);
+    var com = parseInt(document.getElementById('comp').value);
+
+    var totalmarks = eng + mat + phy + chem + com;
+    console.log(totalmarks);
+    
+    var Average = (totalmarks / 5);
+    if(eng>40 && mat>40 && phy>40 && chem>40 && com>40)
+    {
+    document.getElementById('resname').innerHTML = name;
+    document.getElementById('resul').innerHTML = "PASS"; 
+    document.getElementById('gettol').innerHTML = totalmarks;
+    document.getElementById('getavg').innerHTML = Average;
+      if(eng>90 || mat>90 || phy>90 || chem>90 || com>90 )
+      {
+       if(eng>90)
+        document.getElementById('elite').innerHTML = "English";
+       else if(mat>90)
+        document.getElementById('elite').innerHTML = "Maths";
+       else if(phy>90)
+        document.getElementById('elite').innerHTML = "Physics";
+       else if(chem>90)
+        document.getElementById('elite').innerHTML = "Chemistry";
+       else if(com>90)
+        document.getElementById('elite').innerHTML = "Computer";
+        
+      }
+      else
+        {
+         document.getElementById('elite').innerHTML = "NULL";
+          }
+      
+    }
+    else
+    {
+    document.getElementById('resname').innerHTML = name;
+    document.getElementById('resul').innerHTML = "FAIL";
+    document.getElementById('gettol').innerHTML = totalmarks;
+    document.getElementById('getavg').innerHTML = "NULL";
+    document.getElementById('elite').innerHTML = "NULL";
+    }
+    return false;
+                             }
+    </script>
+</html>
